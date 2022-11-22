@@ -9,7 +9,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull(message = "O nome é obrigatorio!")
+    @NotNull(message = "O CEP é obrigatorio!")
     private String cep;
     private String endereco;
     private String formaPagamento;

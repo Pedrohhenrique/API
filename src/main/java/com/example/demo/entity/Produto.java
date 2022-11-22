@@ -38,12 +38,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Double getPrecoIndividual() {
+    public Double getPrecoUnitario() {
         return precoIndividual;
     }
 
-    public void setPrecoIndividual(Double precoIndividual) {
-        this.precoIndividual = precoIndividual;
+    public void setPrecoUnitario(Double precoUnitario) {
+        this.precoIndividual = precoUnitario;
     }
 
     public Double getPrecoTotal() {

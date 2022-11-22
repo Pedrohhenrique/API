@@ -21,7 +21,7 @@ public class Controller {
     @PostMapping
     public Cliente creat(@RequestBody @Valid Cliente cliente){
         for (Produto p : cliente.getProdutos()){
-            p.setPrecoTotal(p.getPrecoIndividual()* p.getQuantidade());
+            p.setPrecoTotal(p.getPrecoUnitario()* p.getQuantidade());
         }
         Cliente clienteSaved = repository.save(cliente);
         return clienteSaved;
