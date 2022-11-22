@@ -17,7 +17,7 @@ public class Cliente {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Produto> produtos;
 
-    public Cliente(String cep, String endereco, List<Produto> produtos) {
+    public Cliente(String cep, String endereco, Integer formaPagamento, Integer parcelas, List<Produto> produtos) {
         this.cep = cep;
         this.endereco = endereco;
         this.produtos = produtos;

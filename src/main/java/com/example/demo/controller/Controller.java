@@ -4,6 +4,7 @@ import com.example.demo.entity.Cliente;
 import com.example.demo.entity.Produto;
 import com.example.demo.repository.Repository;
 import com.example.demo.dto.clienteDTO;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +22,6 @@ public class Controller {
 
     @PostMapping
     public Cliente creat(@RequestBody @Valid Cliente cliente){
-        for (Produto p : cliente.getProdutos()){
-            p.setPrecoTotal(p.getPrecoUnitario()* p.getQuantidade());
-        }
-        Cliente clienteSaved = repository.save(cliente);
-        return clienteSaved;
-    }
-    @PostMapping
-    public ClienPate creat(@RequestBody @Valid Cliente cliente){
         for (Produto p : cliente.getProdutos()){
             p.setPrecoTotal(p.getPrecoUnitario()* p.getQuantidade());
         }
