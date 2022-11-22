@@ -4,9 +4,7 @@ import com.example.demo.entity.Cliente;
 import com.example.demo.entity.Produto;
 import com.example.demo.repository.Repository;
 import com.example.demo.dto.clienteDTO;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/cliente/v1/")
+@RequestMapping(value = "/pedido/v1/")
 public class Controller {
 
     @Autowired
@@ -23,7 +21,7 @@ public class Controller {
     @PostMapping
     public Cliente creat(@RequestBody @Valid Cliente cliente){
         for (Produto p : cliente.getProdutos()){
-            p.setPrecoTotal(p.getPrecoUnitario()* p.getQuantidade());
+            p.setPrecoTotal(p.getPrecoIndividual()* p.getQuantidade());
         }
         Cliente clienteSaved = repository.save(cliente);
         return clienteSaved;
@@ -41,13 +39,13 @@ public class Controller {
             Optional<Cliente> cliente = Optional.of(repository.getById(id));
             if(cliente.isPresent()){
                 repository.deleteById(id);
-                return "Cliente de " + id + " deletado com sucesso";
+                return "pedido de " + id + " deletado com sucesso";
             }else{
-                throw new Exception("Cliente inexistente");
+                throw new Exception("pedido inexistente");
             }
         }catch(Exception e){
             e.printStackTrace();
-            return "O cliente de " + id + " não existe para ser deletado!" +
+            return "O pedido de " + id + " não existe para ser deletado!" +
                     " Por favor, entre em contato com o atendimento ...";
         }
     }
@@ -64,9 +62,9 @@ public class Controller {
             Cliente cliente = velhoCliente.get();
             cliente.setEndereco(clienteDTO.getEndereco());
             repository.save(cliente);
-            return "Cliente de ID" + cliente.getId() + " atualizado com sucesso!";
+            return "pedido de ID" + cliente.getId() + " atualizado com sucesso!";
         }else{
-            return "Cliente de ID " + id + " não existe!";
+            return "pedido de ID " + id + " não existe!";
         }
     }
 }

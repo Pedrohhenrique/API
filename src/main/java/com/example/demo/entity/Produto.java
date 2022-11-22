@@ -12,13 +12,13 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    private Double precoUnitario;
+    private Double precoIndividual;
     private Double precoTotal;
     private Integer quantidade;
 
-    public Produto(String nome, Double precoUnitario, Double precoTotal, Integer quantidade) {
+    public Produto(String nome, Double precoIndividual, Double precoTotal, Integer quantidade) {
         this.nome = nome;
-        this.precoUnitario = precoUnitario;
+        this.precoIndividual = precoIndividual;
         this.precoTotal = precoTotal;
         this.quantidade = quantidade;
     }
@@ -38,12 +38,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Double getPrecoUnitario() {
-        return precoUnitario;
+    public Double getPrecoIndividual() {
+        return precoIndividual;
     }
 
-    public void setPrecoUnitario(Double precoUnitario) {
-        this.precoUnitario = precoUnitario;
+    public void setPrecoIndividual(Double precoIndividual) {
+        this.precoIndividual = precoIndividual;
     }
 
     public Double getPrecoTotal() {
